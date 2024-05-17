@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Not on Instagram</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Background Image Styling */
+        .background-image {
+            background-image: url('https://vignette.wikia.nocookie.net/doraemon/images/1/1e/Nobita_house_2016.png/revision/latest?cb=20160827103454&path-prefix=en');
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px);
+            animation: backgroundZoom 30s linear infinite;
+            position: fixed; 
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        @keyframes backgroundZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 550px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease; 
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Instagram Logo Styling */
+        .insta-logo {
+            width: 130px; 
+            margin-bottom: 25px;
+            animation: logo-pulse 1.8s infinite; 
+            transition: filter 0.3s ease; 
+        }
+
+        .insta-logo:hover {
+            filter: drop-shadow(0 0 5px #007bff);
+        }
+
+        @keyframes logo-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Text Fade-In Animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards; 
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Go Back Button Styling */
+        button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease; 
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button.button-click { /* Style for the click effect */
+            transform: scale(0.9); 
+            opacity: 0.8; 
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) { 
+            .container {
+                max-width: 90%; 
+                padding: 20px; 
+            }
+            .insta-logo {
+                width: 80px; 
+            }
+            h1 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) { 
+            .container {
+                padding: 15px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div> 
+    <div class="container">
+        <img src="https://ansh-yadav-maths-lover.github.io/img-host/insta-logo.png" alt="Instagram Logo" class="insta-logo">
+        <h1>Not on Instagram</h1>
+        <p class="fade-in">I prefer to connect and share updates on other platforms.</p>
+        <button onclick="goBackWithEffect()" class="go-back-button">Go Back</button>
+    </div>
+
+    <script>
+        function goBackWithEffect() {
+            const button = document.querySelector('.go-back-button');
+            button.classList.add('button-click'); 
+
+            setTimeout(() => {
+                button.classList.remove('button-click');
+                history.back();
+            }, 250);
+        }
+    </script>
+</body>
+</html>
+
