@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Not on Instagram</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Background Image Styling */
+        .background-image {
+            background-image: url('https://vignette.wikia.nocookie.net/doraemon/images/1/1e/Nobita_house_2016.png/revision/latest?cb=20160827103454&path-prefix=en');
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px);
+            animation: backgroundZoom 30s linear infinite;
+            position: fixed; 
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        @keyframes backgroundZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 550px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease; 
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Instagram Logo Styling */
+        .insta-logo {
+            width: 130px; 
+            margin-bottom: 25px;
+            animation: logo-pulse 1.8s infinite; 
+            transition: filter 0.3s ease; 
+        }
+
+        .insta-logo:hover {
+            filter: drop-shadow(0 0 5px #007bff);
+        }
+
+        @keyframes logo-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Text Fade-In Animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards; 
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Go Back Button Styling */
+        button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease; 
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button.button-click { /* Style for the click effect */
+            transform: scale(0.9); 
+            opacity: 0.8; 
+        }
+
+        /* Airplane Styling */
+        .airplane {
+            position: absolute;
+            top: -100px; 
+            right: -100px;
+            width: 100px;
+            z-index: 3;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 1s ease; /* Fade in after loading */
+        }
+
+        /* Keyframes for Animations */
+        @keyframes fly {
+            to {
+                transform: translate(-100vw, 100vh) scale(2); /* Move diagonally to bottom left and scale up */
+            }
+        }
+        
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) { 
+            .container {
+                max-width: 90%; 
+                padding: 20px; 
+            }
+            .insta-logo {
+                width: 80px; 
+            }
+            h1 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) { 
+            .container {
+                padding: 15px; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-image"></div> 
+    <div class="container">
+        <img src="https://ansh-yadav-maths-lover.github.io/img-host/insta-logo.png" alt="Instagram Logo" class="insta-logo">
+        <h1>Not on Instagram</h1>
+        <p class="fade-in">I prefer to connect and share updates on other platforms.</p>
+        <button onclick="goBackWithEffect()" class="go-back-button">Go Back</button>
+    </div>
+    <img src="https://th.bing.com/th/id/R.e738b96e7c18f8e641f3bb7089be875e?rik=MO8kmjYaiCfbCQ&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fdT7%2f648%2fdT7648yjc.png&ehk=DKEcZWI54QeJb2VP3ZaBM2IZLyGEmUaOf9rOfYccuX4%3d&risl=&pid=ImgRaw&r=0" alt="Airplane" class="airplane">
+
+    <script>
+        function goBackWithEffect() {
+            const button = document.querySelector('.go-back-button');
+            const airplane = document.querySelector('.airplane');
+
+            button.classList.add('button-click');
+
+            setTimeout(() => {
+                button.classList.remove('button-click');
+                
+                airplane.style.opacity = 1; // Show airplane
+                airplane.style.animation = 'fly 5s ease-in-out forwards';
+
+                setTimeout(() => {
+                    window.location.href = 'YOUR_URL_HERE'; // Redirect to the specified URL
+                }, 5000);
+            }, 250);
+        }
+    </script>
+</body>
+</html>
