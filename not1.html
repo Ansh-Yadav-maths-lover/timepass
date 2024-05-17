@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Not on Instagram</title>
+    <style>
+        /* Basic Styling */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* A more modern font stack */
+            text-align: center;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden; /* Prevent scrollbars on blur effect */
+        }
+
+        /* Background Image Styling */
+        .background-image {
+            background-image: url('https://vignette.wikia.nocookie.net/doraemon/images/1/1e/Nobita_house_2016.png/revision/latest?cb=20160827103454&path-prefix=en');
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px); /* Stronger blur for more depth */
+            animation: backgroundZoom 30s linear infinite; /* Subtle zoom animation */
+            position: fixed; 
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        @keyframes backgroundZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 550px; /* Slightly wider */
+            padding: 40px; /* More padding for airiness */
+            background-color: rgba(255, 255, 255, 0.9); /* More opaque background */
+            border-radius: 15px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease; /* Add hover effect */
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Instagram Logo Styling */
+        .insta-logo {
+            width: 130px; 
+            margin-bottom: 25px;
+            animation: logo-pulse 1.8s infinite; 
+            transition: filter 0.3s ease; /* Hover effect */
+        }
+
+        .insta-logo:hover {
+            filter: drop-shadow(0 0 5px #007bff);
+        }
+
+        /* ... (Rest of the styles remain the same) ... */
+    </style>
+</head>
+<body>
+    <div class="background-image"></div> 
+    <div class="container">
+        <img src="https://ansh-yadav-maths-lover.github.io/img-host/insta-logo.png" alt="Instagram Logo" class="insta-logo">
+        <h1>Not on Instagram</h1>
+        <p class="fade-in">I prefer to connect and share updates on other platforms.</p>
+        <button onclick="goBackWithEffect()" class="go-back-button">Go Back</button>
+    </div>
+    
+    <script>
+        function goBackWithEffect() {
+            const button = document.querySelector('.go-back-button');
+            button.style.transform = 'scale(0.95)'; // Shrink on click
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';  // Reset after animation
+                history.back();
+            }, 200); // Adjust timing as needed
+        }
+    </script>
+</body>
+</html>
+
